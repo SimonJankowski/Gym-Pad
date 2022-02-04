@@ -6,7 +6,7 @@ const GoogleAuth: React.FC = () => {
   const auth: any = useRef("");
   const [isSignedIn, setIsSignedIn] = useState(null);
 
-  //in use effect first arguement is callback function, second have 3 options:
+  //in use effect first arguement is callback function, second have 3 options: no arguement
   useEffect(() => {
     window.gapi.load("client:auth2", async () => {
       await window.gapi.client.init({
