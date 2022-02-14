@@ -6,8 +6,9 @@ import formatDate from '../helpers/helperDate';
 
 
 const Chart =(props)=> {   //change back to PureComponent if breaks
+  const [range, setRange] = useState([97,100])
   const [user, setUser] = useState([]);
-  const [data, setData] = useState([
+  const [data, setData] = useState([ //backup default values for chart
   { name: "january 1", uv: 97 },
   { name: 'January 4', uv: 92 },
   { name: 'January 5', uv: null },
@@ -17,20 +18,19 @@ const Chart =(props)=> {   //change back to PureComponent if breaks
   { name: 'January 13', uv: 95.4 },
 ]);
  
-const dataConstructor =(daty,wartosci)=>{
+const dataConstructor =(daty,wartosci)=>{ // probobly not the best practice
   let arr =[];
  for(let i=0; i<daty.length; i++){
-   arr.push({name: daty[i], uv:wartosci[i]})
+   arr.push({name: daty[i], w:wartosci[i]})
  }
  return arr
 }
 
   useEffect(()=>{
     setUser(props.user);
-    console.log(props.user)
   },[])
 
-  useEffect(()=>{
+  useEffect(()=>{ //refactor this and data constructor to something better
     if(props.user){
       let staty = props.user.stats.bodyweight;
       let fechas = staty.map(entry=>formatDate(entry.date))
@@ -38,18 +38,7 @@ const dataConstructor =(daty,wartosci)=>{
       fechas.sort()
       
       let ico = dataConstructor(fechas,values)
-      console.log(ico)
       setData(ico)
-      
-      // setData([
-      //   { name: fecha, uv: staty[0].value},
-      //   { name: 'January 4', uv: staty[1].value },
-      //   { name: 'January 5', uv: null },
-      //   { name: 'January 6', uv: 91.5 },
-      //   { name: 'January 7', uv: 93 },
-      //   { name: 'January 8', uv: 95.4 },
-      //   { name: 'January 13', uv: 95.4 },
-      // ])
       console.log(data)
     }
   },[props])
@@ -72,9 +61,9 @@ const dataConstructor =(daty,wartosci)=>{
           >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="name" />
-            <YAxis type="number" domain={[89, 100]}/>
+            <YAxis type="number" domain={range}/>
             <Tooltip />
-            <Line connectNulls type="monotone" dataKey="uv" stroke="#8884d8" fill="#8884d8" />
+            <Line connectNulls type="monotone" dataKey="w" stroke="#8884d8" fill="#8884d8" />
           </LineChart>
         </ResponsiveContainer>
       </div> : "dupa"}

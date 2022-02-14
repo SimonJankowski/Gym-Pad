@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const HomeScreen: React.FC = () => {
   return (
@@ -11,12 +12,12 @@ const HomeScreen: React.FC = () => {
             <p className="lead fw-bold">
               Progress Tracker for your fitness journey
             </p>
-            <a
-              href="/login"
+            <Link
+              to="/login"
               className="btn btn-lg btn-secondary font-weight-bold border-white"
             >
               Easy login
-            </a>
+            </Link>
           </div>
         </main>
         <footer className="mt-auto text-dark-50">
