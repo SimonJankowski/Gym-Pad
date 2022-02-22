@@ -1,3 +1,5 @@
+//This is representation of ChartScreen, but with hard coded id to send get request of user
+// with id:999, and without options to update user's data
 import React, { useState, useEffect } from "react";
 import Chart from "../components/Chart";
 import UserPanel from "../components/UserPanel"
@@ -18,7 +20,7 @@ const ChartScreen: React.FC = (props:any) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios(`http://localhost:3001/user/${props.userId}`); 
+      const result = await axios(`http://localhost:3001/user/999`); 
       console.log(result.data)
       setUser(result.data[0]); 
     };

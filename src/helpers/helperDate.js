@@ -2,9 +2,8 @@
 
 const formatDate =(dateStamp)=>{
     let extractedDate = new Date(dateStamp);
-    let extractedMonth = extractedDate.getMonth()
     let month
-    let day = extractedDate.getDay()
+    let day = extractedDate.getDate()
     switch(extractedDate.getMonth()){
       case 0:
          month = "Jan";
@@ -43,7 +42,7 @@ const formatDate =(dateStamp)=>{
          month = "Dec";
          break;
     }
-    return `${day+1} ${month}`
+    return `${day} ${month}`
  }
 
  export default formatDate;
