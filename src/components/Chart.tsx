@@ -1,6 +1,5 @@
 import React, { PureComponent, useEffect, useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import { IState } from '../Screens/ChartScreen';
 import formatDate from '../helpers/helperDate';
 import {Button, Modal} from 'react-bootstrap'
 import AddMeasuresForm from './AddMeasuresForm'
