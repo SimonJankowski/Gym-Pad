@@ -1,0 +1,9 @@
+1.Think about how much data we want to store in redux
+
+2.Implement Local storage
+
+3. Style up the Add measures button
+
+4.Make sure chart show nothing if there is not a single entry in the data array
+
+5.Add measures or display nothing in the UserPanel
