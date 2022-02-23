@@ -7,7 +7,7 @@ import AddMeasuresForm from './AddMeasuresForm'
 
 
 
-const Chart = (props) => {
+const Chart = (props:any) => {
   //in docs apears as PureComponent
   const [range, setRange] = useState([97, 100]);
   const [chartType, setChartType] = useState("bodyweight");
@@ -19,8 +19,8 @@ const Chart = (props) => {
     { name: "December 31", unreadable: 80 },
   ]);
   //formating dynamicly data to be processable by the chart
-  const dataConstructor = (arr, type) => {
-    const formatedArr = arr.map((entry) => {
+  const dataConstructor = (arr:any, type:any) => {
+    const formatedArr = arr.map((entry:any) => {
       return {
         name: formatDate(entry.date),
         [type]: entry.value,
@@ -31,14 +31,14 @@ const Chart = (props) => {
   //function below generates the best possible range of view of the chart, that is universal for
   //any measures that are in the application or can be added in the future
   //(depending on the value, values aplitude over the time, leaving margin on the edges)
-  const getRange = (arr) => {
+  const getRange = (arr:any) => {
     let minValue = arr.reduce(
-      (acc, curr) =>
+      (acc:any, curr:any) =>
         curr.value < acc.value && curr.value !== null ? curr : acc,
       arr[0] || undefined
     );
     let maxValue = arr.reduce(
-      (acc, curr) => (curr.value > acc.value ? curr : acc),
+      (acc:any, curr:any) => (curr.value > acc.value ? curr : acc),
       arr[0] || undefined
     );
     console.log(minValue.value, maxValue.value);
@@ -81,7 +81,7 @@ const Chart = (props) => {
     console.log(data);
   }, [props, chartType]);
 
-  const onSelectChange = (e) => {
+  const onSelectChange = (e:any) => {
     setChartType(e.target.value);
   };
 
