@@ -148,7 +148,7 @@ const Chart = (props) => {
           </div>
         </>
       ) : (
-        "dupa"
+        "Loading... It can take a while, backend is on free heroku tier"
       )}
     </>
   );

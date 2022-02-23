@@ -20,7 +20,7 @@ const ChartScreen: React.FC = (props:any) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios(`http://localhost:3001/user/999`); 
+      const result = await axios(`https://gypad-backend.herokuapp.com/user/999`); 
       console.log(result.data)
       setUser(result.data[0]); 
     };
