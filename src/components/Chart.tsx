@@ -1,7 +1,7 @@
-import React, { PureComponent, useEffect, useState } from 'react';
+import {useEffect, useState } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import formatDate from '../helpers/helperDate';
-import {Button, Modal} from 'react-bootstrap'
+import {Modal} from 'react-bootstrap'
 import AddMeasuresForm from './AddMeasuresForm'
 
 
@@ -49,7 +49,7 @@ const Chart = (props:any) => {
 
   useEffect(() => {
     setUser(props.user);
-  }, []);
+  }, [props.user]);
   //useEffect below optimasie values that has to be passed to the chart to optimise UX
   //dynamicly depending on users data
   useEffect(() => {
