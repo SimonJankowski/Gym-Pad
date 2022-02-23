@@ -2,7 +2,7 @@
 // with id:999, and without options to update user's data
 import React, { useState, useEffect } from "react";
 import UserPanel from "../components/UserPanel";
-import Chart from "../components/Chart.js";
+import Chart from "../components/Chart";
 import axios from "axios";
 import { connect } from "react-redux";
 
