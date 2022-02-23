@@ -1,8 +1,8 @@
 //This is representation of ChartScreen, but with hard coded id to send get request of user
 // with id:999, and without options to update user's data
 import React, { useState, useEffect } from "react";
-import Chart from "../components/Chart";
-import UserPanel from "../components/UserPanel"
+import Chart from "../components/Chart.js";
+import UserPanel from "../components/UserPanel";
 import axios from "axios";
 import { connect } from "react-redux";
 
