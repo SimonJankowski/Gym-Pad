@@ -21,7 +21,7 @@ const GoogleAuth: React.FC<Props> = (props) => {
     window.gapi.load("client:auth2", async () => {
       await window.gapi.client.init({
         clientId:
-          "97173588437-dqae086j1cbfeb24duot9og4eeo3c5n1.apps.googleusercontent.com",
+          "97173588437-rbrteopmui4b1qkf4bd8gpuhf68hnncs.apps.googleusercontent.com",
         scope: "email",
       });
 
