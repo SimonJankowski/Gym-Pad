@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useRef, FC } from "react";
+import React, { useState, useEffect, useRef} from "react";
 import axios from "axios";
 import { connect } from "react-redux";
-import { JsxElement, JsxFragment } from "typescript";
 import { signIn, signOut } from "../actions";
 import { Link } from "react-router-dom";
 
@@ -22,7 +21,7 @@ const GoogleAuth: React.FC<Props> = (props) => {
     window.gapi.load("client:auth2", async () => {
       await window.gapi.client.init({
         clientId:
-          "97173588437-eu6m0juhite8l928b79so73mvdq695mk.apps.googleusercontent.com",
+          "97173588437-dqae086j1cbfeb24duot9og4eeo3c5n1.apps.googleusercontent.com",
         scope: "email",
       });
 
