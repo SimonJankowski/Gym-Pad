@@ -47,6 +47,7 @@ const UserPanel: React.FC<UserPanelProps> = (props: any) => {
     console.log(stats);
   }, [props]);
 
+ //refactor to inline function below
   const getDateFromTimestamp = (tStamp: number) => {
     let preformatted = new Date(tStamp);
     return preformatted.toDateString();

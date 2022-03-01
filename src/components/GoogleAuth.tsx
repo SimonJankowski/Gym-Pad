@@ -40,8 +40,8 @@ const GoogleAuth: React.FC<Props> = (props) => {
       //const result = await axios(`https://gypad-backend.herokuapp.com/user/1`);
       console.log(auth.current.currentUser.get().getId())
       console.log(result.data);
-      if (result.data[0] && result.data[0].name) {
-        userName.current = result.data[0].name;
+      if (result.data && result.data.name) {
+        userName.current = result.data.name;
         setHasName(true);
         console.log("jest taki user i ma imie");
       }
