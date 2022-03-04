@@ -15,7 +15,7 @@ interface IStaty {
 }
 
 const UserPanel: React.FC<UserPanelProps> = (props: any) => {
-  console.log(props);
+  //console.log(props);
   const [stats, setStats] = useState<IStaty>({
     initialWeight: 1,
     initialWaist: 1,
@@ -44,7 +44,7 @@ const UserPanel: React.FC<UserPanelProps> = (props: any) => {
     if (props.user && props.user.stats.bodyweight.length > 1) {
       setStats(calcData(props.user.stats));
     }
-    console.log(stats);
+    //console.log(stats);
   }, [props]);
 
  //refactor to inline function below

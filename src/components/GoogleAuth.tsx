@@ -32,20 +32,20 @@ const GoogleAuth: React.FC<Props> = (props) => {
   }, []);
 
   const onAuthChange = async (isSignedIn: boolean) => {
-    //console.log(isSignedIn)
     if (isSignedIn) {
       const result = await axios(
         `https://gypad-backend.herokuapp.com/user/${auth.current.currentUser.get().getId()}`
+        //`http://localhost:3001/user/${auth.current.currentUser.get().getId()}`
       );
       //const result = await axios(`https://gypad-backend.herokuapp.com/user/1`);
-      console.log(auth.current.currentUser.get().getId())
-      console.log(result.data);
+      //console.log(auth.current.currentUser.get().getId())
+      if(!result.data) console.log("nie ma usera");
       if (result.data && result.data.name) {
         userName.current = result.data.name;
         setHasName(true);
         console.log("jest taki user i ma imie");
       }
-      props.signIn(auth.current.currentUser.get().getId());
+      props.signIn(auth.current.currentUser.get().getId(), result.data.stats);
     } else {
       props.signOut();
     }
@@ -69,7 +69,9 @@ const GoogleAuth: React.FC<Props> = (props) => {
       id: props.userId,
       username: name,
     });
-    //todo: add action creator to update user in redux store
+    console.log(response)
+    props.signIn(response.data.id, response.data.stats)
+    
     console.log(props);
     if(response.data.name){
     setHasName(true);
@@ -138,8 +140,9 @@ const GoogleAuth: React.FC<Props> = (props) => {
 };
 
 const mapStateToProps = (state: any) => {
+  //console.log(state)
   //contains global state pieces
-  return { isSignedIn: state.auth.isSignedIn, userId: state.auth.userId };
+  return { isSignedIn: state.auth.isSignedIn, userId: state.auth.userId, stats:state.auth.stats };
 };
 
 export default connect(mapStateToProps,{ signIn, signOut })(GoogleAuth);

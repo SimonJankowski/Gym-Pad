@@ -22,7 +22,7 @@ const ChartScreen: React.FC = (props:any) => {
     const fetchData = async () => {
       const result = await axios(`https://gypad-backend.herokuapp.com/user/999`); 
       console.log(result.data)
-      setUser(result.data[0]); 
+      setUser(result.data); 
     };
     fetchData();
   },[]);

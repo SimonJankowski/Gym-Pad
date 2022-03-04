@@ -1,9 +1,12 @@
 
 
-export const signIn = (userId:number|string):Object=>{
+export const signIn = (userId:number|string, stats:any):Object=>{
     return {
         type:'SIGN_IN',
-        payload: userId
+        payload: {
+            userId:userId,
+            stats:stats
+        }
     }
 }
 

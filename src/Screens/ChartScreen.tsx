@@ -14,16 +14,19 @@ import { connect } from "react-redux";
     }
   }
 const ChartScreen: React.FC = (props:any) => {
+  console.log(props)
   const [user, setUser] = useState<IState["user"]>();
 
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(`https://gypad-backend.herokuapp.com/user/${props.userId}`); 
-      console.log(result.data)
-      setUser(result.data[0]); 
+      //const result = await axios(`http://localhost:3001/user/${props.userId}`); 
+      //console.log(result.data)
+      setUser(result.data); 
     };
     fetchData();
   },[]);
+
 
   return (
     <div className="body-chart d-flex ">
@@ -49,8 +52,8 @@ const ChartScreen: React.FC = (props:any) => {
 };
 
 const mapStateToProps = (state:any) => {
-  console.log(state)
-  return { userId: state.auth.userId }
+  //console.log(state)
+  return { userId: state.auth.userId, stats:state.auth.stats }
 }
 
 export default connect(mapStateToProps )(ChartScreen);

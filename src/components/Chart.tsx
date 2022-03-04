@@ -7,6 +7,7 @@ import AddMeasuresForm from './AddMeasuresForm'
 
 
 const Chart = (props:any) => {
+  console.log(props)
   //in docs apears as PureComponent
   const [range, setRange] = useState([97, 100]);
   const [chartType, setChartType] = useState("bodyweight");
@@ -53,7 +54,7 @@ const Chart = (props:any) => {
   //useEffect below optimasie values that has to be passed to the chart to optimise UX
   //dynamicly depending on users data
   useEffect(() => {
-    console.log(props.user);
+    //console.log(props.user);
     if (props.user && props.user.stats.waist.length > 0) {
       let stats = props.user.stats;
       if (
@@ -77,7 +78,7 @@ const Chart = (props:any) => {
         setData(ico);
       }
     }
-    console.log(data);
+    //console.log(data);
   }, [props, chartType]);
 
   const onSelectChange = (e:any) => {

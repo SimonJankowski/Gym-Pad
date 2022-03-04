@@ -36,7 +36,8 @@ const AddMeasuresForm = (props: any) => {
     e.preventDefault();
     console.log(form);
     //patch request
-    const res = await axios.patch('http://localhost:3001/user/1', {...form, timestamp: Date.now()});
+    //const res = await axios.patch('http://localhost:3001/user/1', {...form, timestamp: Date.now()});
+    const res = await axios.patch(`https://gypad-backend.herokuapp.com/user/${props.userId}`, {...form, timestamp: Date.now()});
     props.modalToggle();
   };
 
