@@ -14,15 +14,18 @@ import { connect } from "react-redux";
     }
   }
 const ChartScreen: React.FC = (props:any) => {
-  console.log(props)
+  //console.log(props)
   const [user, setUser] = useState<IState["user"]>();
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios(`https://gypad-backend.herokuapp.com/user/${props.userId}`); 
-      //const result = await axios(`http://localhost:3001/user/${props.userId}`); 
-      //console.log(result.data)
-      setUser(result.data); 
+      if (props.userId !== null) {
+        const result = await axios(`https://gypad-backend.herokuapp.com/user/${props.userId}`);
+        // const result = await axios(
+        //   `http://localhost:3001/user/${props.userId}`
+        // );
+        setUser(result.data);
+      }
     };
     fetchData();
   },[]);
@@ -38,12 +41,12 @@ const ChartScreen: React.FC = (props:any) => {
                 <h2 className="card-header m-2">Welcome {user ? <span>{user.name}</span> : <span> </span>}</h2>
               </div>
               <div className="chart">
-                <Chart user={user}/>
+                <Chart user={user} userData={props.stats} userId={props.userId}/>
               </div>
             </div>
           </div>
           <div className="col-12 col-md-6 col-lg-4 mt-2">
-            <UserPanel user={user}/>
+            <UserPanel user={user} userData={props.stats} userId={props.userId}/>
           </div>
         </div>
       </div>

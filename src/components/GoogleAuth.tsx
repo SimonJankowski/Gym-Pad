@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef} from "react";
 import axios from "axios";
 import { connect } from "react-redux";
@@ -34,11 +35,9 @@ const GoogleAuth: React.FC<Props> = (props) => {
   const onAuthChange = async (isSignedIn: boolean) => {
     if (isSignedIn) {
       const result = await axios(
-        `https://gypad-backend.herokuapp.com/user/${auth.current.currentUser.get().getId()}`
+`https://gypad-backend.herokuapp.com/user/${auth.current.currentUser.get().getId()}`
         //`http://localhost:3001/user/${auth.current.currentUser.get().getId()}`
       );
-      //const result = await axios(`https://gypad-backend.herokuapp.com/user/1`);
-      //console.log(auth.current.currentUser.get().getId())
       if(!result.data) console.log("nie ma usera");
       if (result.data && result.data.name) {
         userName.current = result.data.name;
