@@ -20,8 +20,7 @@ const ChartScreen: React.FC = (props:any) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios(`https://gypad-backend.herokuapp.com/user/999`); 
-      console.log(result.data)
+      const result = await axios(`https://gypad-backend.herokuapp.com/user/999`);
       setUser(result.data); 
     };
     fetchData();
@@ -37,12 +36,12 @@ const ChartScreen: React.FC = (props:any) => {
                 <h2 className="card-header m-2">Welcome {user ? <span>{user.name}</span> : <span> </span>}</h2>
               </div>
               <div className="chart">
-                <Chart user={user}/>
+                <Chart user={user} userData={props.stats} userId={999}/>
               </div>
             </div>
           </div>
           <div className="col-12 col-md-6 col-lg-4 mt-2">
-            <UserPanel user={user}/>
+            <UserPanel user={user} userData={props.stats} userId={999}/>
           </div>
         </div>
       </div>
@@ -51,8 +50,8 @@ const ChartScreen: React.FC = (props:any) => {
 };
 
 const mapStateToProps = (state:any) => {
-  console.log(state)
-  return { userId: state.auth.userId }
+  //console.log(state)
+  return { userId: state.auth.userId, stats:state.auth.stats }
 }
 
 export default connect(mapStateToProps )(ChartScreen);

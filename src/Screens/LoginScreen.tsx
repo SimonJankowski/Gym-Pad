@@ -24,6 +24,3 @@ const LoginScreen: React.FC = () => {
 };
 
 export default LoginScreen;
-
-//97173588437-eu6m0juhite8l928b79so73mvdq695mk.apps.googleusercontent.com
-//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

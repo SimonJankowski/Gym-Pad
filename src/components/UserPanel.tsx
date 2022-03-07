@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 
 interface UserPanelProps {
   user: any;
+  userData?: any;
+  userId?: number;
 }
 interface IStaty {
   initialWeight: number;
@@ -15,7 +17,6 @@ interface IStaty {
 }
 
 const UserPanel: React.FC<UserPanelProps> = (props: any) => {
-  //console.log(props);
   const [stats, setStats] = useState<IStaty>({
     initialWeight: 1,
     initialWaist: 1,
@@ -42,12 +43,15 @@ const UserPanel: React.FC<UserPanelProps> = (props: any) => {
 
   useEffect(() => {
     if (props.user && props.user.stats.bodyweight.length > 1) {
-      setStats(calcData(props.user.stats));
+      if (props.userId === 999) {
+        setStats(calcData(props.user.stats));
+      } else {
+        setStats(calcData(props.userData));
+      }
     }
-    //console.log(stats);
   }, [props]);
 
- //refactor to inline function below
+  //refactor to inline function below
   const getDateFromTimestamp = (tStamp: number) => {
     let preformatted = new Date(tStamp);
     return preformatted.toDateString();
@@ -55,7 +59,7 @@ const UserPanel: React.FC<UserPanelProps> = (props: any) => {
 
   const renderProgress = (before: number, after: number) => {
     if (before < after) {
-      return <span className="text-success">+{after - before}</span>;
+      return <span className="text-success">+{Math.round((after-before) * 10) / 10}</span>;
     } else if (before === after) {
       return <span className="text-primary"> 0</span>;
     } else
@@ -86,40 +90,53 @@ const UserPanel: React.FC<UserPanelProps> = (props: any) => {
             <div className="list-group-item d-flex justify-content-between">
               <span>Bodyweight:</span>
               {props.user.stats.bodyweight[0] ? (
-              <span className="">
-                {stats.initialWaist} / {stats.currentWaist} (
-                {renderProgress(stats.initialWeight, stats.currentWeight)} kg)
-              </span>) : "? kg"}
+                <span className="">
+                  {stats.initialWeight} / {stats.currentWeight} (
+                  {renderProgress(stats.initialWeight, stats.currentWeight)} kg)
+                </span>
+              ) : (
+                "? kg"
+              )}
             </div>
 
             <div className="list-group-item d-flex justify-content-between">
               <span>Waist:</span>
               {props.user.stats.waist[0] ? (
-              <span className="">
-                {stats.initialWaist} / {stats.currentWaist} (
-                {renderProgress(stats.initialWaist, stats.currentWaist)} cm)
-              </span>) : "? cm"}
+                <span className="">
+                  {stats.initialWaist} / {stats.currentWaist} (
+                  {renderProgress(stats.initialWaist, stats.currentWaist)} cm)
+                </span>
+              ) : (
+                "? cm"
+              )}
             </div>
 
             <div className="list-group-item d-flex justify-content-between">
               <span>Biceps:</span>
               {props.user.stats.biceps[0] ? (
-              <span className="">
-                {stats.initialBiceps} / {stats.currentBiceps} (
-                {renderProgress(stats.initialBiceps, stats.currentBiceps)} cm)
-              </span>) : "? cm"}
+                <span className="">
+                  {stats.initialBiceps} / {stats.currentBiceps} (
+                  {renderProgress(stats.initialBiceps, stats.currentBiceps)} cm)
+                </span>
+              ) : (
+                "? cm"
+              )}
             </div>
 
             <div className="list-group-item d-flex justify-content-between">
               <span>Benchpress:</span>
               {props.user.stats.benchpress[0] ? (
-              <span className="">
-                {stats.initialBenchpress} / {stats.currentBenchpress} (
-                {renderProgress(
-                  stats.initialBenchpress,
-                  stats.currentBenchpress
-                )} kg)
-              </span>) : "? kg"}
+                <span className="">
+                  {stats.initialBenchpress} / {stats.currentBenchpress} (
+                  {renderProgress(
+                    stats.initialBenchpress,
+                    stats.currentBenchpress
+                  )}{" "}
+                  kg)
+                </span>
+              ) : (
+                "? kg"
+              )}
             </div>
           </ul>
         </div>

@@ -1,9 +1,10 @@
 //Function below takes as arguement array of Objects, loops over them 
-//and checks if dates are apearing as one after another
+//and checks if dates are apearing as one day after another
 //then adding aditional objects with value null
 
 
 const fillTheDates = (arrFromDB) => {
+
   let newArr = [arrFromDB[0]];
   let dayInAarray, nextDayInAarray, nextDay, fillUpDay, d, lastDayInArray;
   for (let i = 0; i < arrFromDB.length - 1; i++) {
@@ -11,7 +12,12 @@ const fillTheDates = (arrFromDB) => {
     nextDayInAarray = new Date(arrFromDB[i + 1].date);
     nextDay = new Date(arrFromDB[i].date);              //nextDay is a duplicate of dayInArray but, is needed because it will be modified in the next line
     nextDay.setDate(dayInAarray.getDate() + 1);
-    if (nextDay.getDate() === nextDayInAarray.getDate()) {
+    //first It will check if there are entries from the same day, if so, he will ignore the one that apears later in array
+    if(dayInAarray.getDate()===nextDayInAarray.getDate() && dayInAarray.getMonth()===nextDayInAarray.getMonth()){
+      console.log("two entries from the same day");
+      continue
+    }
+    if (nextDay.getDate() === nextDayInAarray.getDate() && nextDay.getMonth()===nextDayInAarray.getMonth()) {
       console.log("no gap in an array");
       newArr.push(arrFromDB[i + 1]);
     } else {
