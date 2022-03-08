@@ -52,14 +52,14 @@ const Chart = (props: any) => {
   //dynamicly depending on users data
   useEffect(() => {
     let stats;
-
-    if (props.userData && typeof props.user!==undefined) {
+    console.log(typeof props.user)
+    if (props.userData && (typeof props.user)!==undefined) {
       if (props.userId === 999 && props.user) {
         stats = props.user.stats;
       } else {
         stats = props.userData;
       }
-      if (chartType === "bodyweight" && stats.bodyweight.length) {
+      if (chartType === "bodyweight" && stats.bodyweight ) {
         let ico = dataConstructor(fillTheDates(stats.bodyweight), chartType);
         setRange(getRange(stats.bodyweight));
         setData(ico);

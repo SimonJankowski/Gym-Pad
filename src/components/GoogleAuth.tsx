@@ -98,7 +98,7 @@ const GoogleAuth: React.FC<Props> = (props) => {
 
   const renderAuthButton = (): JSX.Element | null => {
     if (props.isSignedIn === null) {
-      return null; //replace with  spinner later on
+      return <div>Loader</div>
     } else if (props.isSignedIn) {
       return (
         <button onClick={onSignOutClick} className="btn btn-danger btn-lg m-3">
