@@ -42,7 +42,7 @@ const UserPanel: React.FC<UserPanelProps> = (props: any) => {
   };
 
   useEffect(() => {
-    if (props.user && props.user.stats.bodyweight.length > 1) {
+    if (props.user && props.user.stats.bodyweight.length >= 1) {
       if (props.userId === 999) {
         setStats(calcData(props.user.stats));
       } else {

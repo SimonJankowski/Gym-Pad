@@ -53,7 +53,7 @@ const Chart = (props: any) => {
   useEffect(() => {
     let stats;
 
-    if (props.userData && typeof props.use!==undefined) {
+    if (props.userData && typeof props.user!==undefined) {
       if (props.userId === 999 && props.user) {
         stats = props.user.stats;
       } else {
@@ -63,16 +63,16 @@ const Chart = (props: any) => {
         let ico = dataConstructor(fillTheDates(stats.bodyweight), chartType);
         setRange(getRange(stats.bodyweight));
         setData(ico);
-      } else if (chartType === "waist" && stats.waist) {
-        let ico = dataConstructor(fillTheDates(stats.waist.length), chartType);
+      } else if (chartType === "waist" && stats.waist.length) {
+        let ico = dataConstructor(fillTheDates(stats.waist), chartType);
         setRange(getRange(stats.waist));
         setData(ico);
-      } else if (chartType === "biceps" && stats.bodyweight) {
-        let ico = dataConstructor(fillTheDates(stats.biceps.length), chartType);
+      } else if (chartType === "biceps" && stats.biceps.length) {
+        let ico = dataConstructor(fillTheDates(stats.biceps), chartType);
         setRange(getRange(stats.biceps));
         setData(ico);
-      } else if (chartType === "benchpress" && stats.bodyweight) {
-        let ico = dataConstructor(fillTheDates(stats.benchpress.length), chartType);
+      } else if (chartType === "benchpress" && stats.benchpress.length) {
+        let ico = dataConstructor(fillTheDates(stats.benchpress), chartType);
         setRange(getRange(stats.benchpress));
         setData(ico);
       }
