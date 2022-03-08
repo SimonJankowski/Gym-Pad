@@ -59,7 +59,7 @@ const Chart = (props: any) => {
       } else {
         stats = props.userData;
       }
-      if (chartType === "bodyweight" && stats.bodyweight ) {
+      if (chartType === "bodyweight" && stats.bodyweight.length ) {
         let ico = dataConstructor(fillTheDates(stats.bodyweight), chartType);
         setRange(getRange(stats.bodyweight));
         setData(ico);
